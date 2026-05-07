@@ -1,0 +1,22 @@
+
+package com.example.race.service;
+
+import com.example.race.model.Car;
+import com.example.race.repository.CarRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class CarService {
+    private final CarRepository repo;
+
+    public CarService(CarRepository repo) {
+        this.repo = repo;
+    }
+
+    public List<Car> getAll() { return repo.findAll(); }
+    public Car getById(Long id) { return repo.findById(id).orElse(null); }
+    public Car save(Car car) { return repo.save(car); }
+    public void delete(Long id) { repo.deleteById(id); }
+}
